@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class PlayerStateController : MonoBehaviour
 {
+    PlayerMovement move;
+    [SerializeField]float lostSpeed = 0;
+    float temp;
+
+    void Start()
+    {
+        move = GetComponent<PlayerMovement>();
+        temp = move.speed;
+    }
+
     void StateMachine(int type)
     {
         switch (type)
@@ -26,19 +36,15 @@ public class PlayerStateController : MonoBehaviour
     void Slow()
     {
         move.speed = lostSpeed;
-        Sprite(0);
     }
 
     void Root()
     {
         move.speed = 0;
-        animator.SetBool("isDancing", true);
-        Sprite(2);
     }
 
     void Drunk()
     {
         move.speed = -temp;
-        Sprite(3);
     }
 }

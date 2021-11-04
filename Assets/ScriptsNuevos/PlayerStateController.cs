@@ -12,16 +12,10 @@ public class PlayerStateController : MonoBehaviour
                 Slow();
                 break;
             case 2:
-                TimeOut();
-                break;
-            case 3:
                 Root();
                 break;
-            case 4:
+            case 3:
                 Drunk();
-                break;
-            case 5:
-                Blind();
                 break;
 
             default:
@@ -35,12 +29,6 @@ public class PlayerStateController : MonoBehaviour
         Sprite(0);
     }
 
-    void TimeOut()
-    {
-        canvasTimer.GetComponent<Timer>().pretime -= lostTime;
-        Sprite(1);
-    }
-
     void Root()
     {
         move.speed = 0;
@@ -52,11 +40,5 @@ public class PlayerStateController : MonoBehaviour
     {
         move.speed = -temp;
         Sprite(3);
-    }
-
-    void Blind()
-    {
-        lantern.SetActive(false);
-        Sprite(4);
     }
 }

@@ -6,12 +6,23 @@ public class PlayerStateController : MonoBehaviour
 {
     PlayerMovement move;
     [SerializeField]float lostSpeed = 0;
+    [SerializeField] private casesSO channel;
     float temp;
 
     void Start()
     {
         move = GetComponent<PlayerMovement>();
         temp = move.speed;
+    }
+
+    private void OnEnable()
+    {
+        channel.OnJulianHit += StateMachine;
+    }
+
+    private void OnDisable()
+    {
+        channel.OnJulianHit -= StateMachine;
     }
 
     void StateMachine(int type)
